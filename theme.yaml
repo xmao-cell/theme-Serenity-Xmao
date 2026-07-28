@@ -7,9 +7,10 @@ spec:
   author:
     name: Xmao
     website: https://www.sitn.top
-  description: Serenity 开发的 Halo 博客主题，简约优雅，支持亮色/暗色双主题色配置。
+  description: 基于 Serenity 开发的 Halo 博客主题进行二次开发，新增 Xmao 品牌信息、友链资料复制、Link Submit 适配及友链申请流程。
   logo: /themes/theme-Xmao/assets/public/favicon.jpg
   homepage: https://www.sitn.top
+  issues: https://github.com/xmao-cell/theme-Serenity-Xmao/issues
   license:
     - name: GPL-3.0
       url: LICENSE
