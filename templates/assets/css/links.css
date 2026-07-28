@@ -497,12 +497,21 @@
   100% { opacity: 0; }
 }
 
+.link-apply-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.link-apply-submit,
 .link-apply-copy-all {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  margin-top: var(--space-2);
   padding: 4px 9px;
   border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
   border-radius: var(--radius-sm);
@@ -515,26 +524,24 @@
   transition: background var(--duration-fast), border-color var(--duration-fast), color var(--duration-fast);
 }
 
+.link-apply-submit svg,
 .link-apply-copy-all svg {
   width: 12px;
   height: 12px;
   flex-shrink: 0;
 }
 
-.link-apply-copy-all:hover,
-.link-apply-copy-all.copied {
-  border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+.link-apply-submit {
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
   background: color-mix(in srgb, var(--color-accent) 14%, transparent);
   color: var(--color-accent);
 }
 
-.link-apply-submit {
-  font-weight: 600;
-  color: var(--color-text);
-  transition: color var(--duration-fast);
-}
-
-.link-apply-submit:hover {
+.link-apply-submit:hover,
+.link-apply-copy-all:hover,
+.link-apply-copy-all.copied {
+  border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
   color: var(--color-accent);
 }
 

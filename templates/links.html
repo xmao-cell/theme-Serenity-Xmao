@@ -116,7 +116,8 @@
 
       <div class="link-apply" data-aos="fade-up" th:if="${theme.config.links == null || theme.config.links.linksConfig == null || theme.config.links.linksConfig.enabled == null || theme.config.links.linksConfig.enabled}">
         <h2 class="link-apply-title">申请友链</h2>
-        <p class="link-apply-desc">友链提交可通过<strong></strong>注册进行邀请，或直接联系博主。下方是本站信息，点击可一键复制。</p>
+        <p class="link-apply-desc" th:if="${pluginFinder.available('link-submit')}">点击“提交友链申请”填写资料，审核通过后即可加入。下方是本站信息，点击可一键复制。</p>
+        <p class="link-apply-desc" th:unless="${pluginFinder.available('link-submit')}">如需交换友链，请直接联系博主。下方是本站信息，点击可一键复制。</p>
         <div class="link-apply-info" th:with="lc=${theme.config.links != null ? theme.config.links.linksConfig : null}">
           <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">名称：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerName)) ? (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title) : lc.ownerName}">站点名称</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
           <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">描述：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerDescription)) ? (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.description != null ? theme.config.basic.siteInfo.description : site.subtitle) : lc.ownerDescription}">站点描述</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
@@ -124,10 +125,16 @@
           <span class="link-apply-item" th:if="${(lc != null and !#strings.isEmpty(lc.ownerAvatar)) or !#strings.isEmpty(site.logo)}" th:with="avatarUrl=${(lc == null or #strings.isEmpty(lc.ownerAvatar)) ? site.logo : lc.ownerAvatar},siteBase=${#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : site.url}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">头像：</span><span class="link-apply-value" th:text="${#strings.startsWith(avatarUrl, 'http://') or #strings.startsWith(avatarUrl, 'https://') ? avatarUrl : siteBase + (#strings.startsWith(avatarUrl, '/') ? avatarUrl : '/' + avatarUrl)}">头像完整链接</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
           <span class="link-apply-item" th:if="${theme.config.footer != null and theme.config.footer.icpConfig != null and theme.config.footer.icpConfig.showIcp == true and theme.config.footer.icpConfig.icp != null and !#strings.isEmpty(theme.config.footer.icpConfig.icp)}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">ICP：</span><span class="link-apply-value" th:text="${theme.config.footer.icpConfig.icp}">ICP备案号</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
         </div>
-        <button class="link-apply-copy-all" type="button" onclick="copyAllApplyInfo(this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>复制全部信息</span>
-        </button>
+        <div class="link-apply-actions">
+          <button class="link-apply-submit" type="button" th:if="${pluginFinder.available('link-submit')}" onclick="LinkSubmitWidget.open()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            <span>提交友链申请</span>
+          </button>
+          <button class="link-apply-copy-all" type="button" onclick="copyAllApplyInfo(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>复制全部信息</span>
+          </button>
+        </div>
       </div>
     </div>
   </main>
