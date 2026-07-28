@@ -1923,6 +1923,13 @@ spec:
               label: 启用友链设置
               value: true
               help: 启用后可自定义友链申请区域的站点信息
+            - $formkit: switch
+              id: link_submit_enabled
+              name: linkSubmitEnabled
+              if: $get(links_enabled).value
+              label: 启用友链自助申请
+              value: true
+              help: 需要安装并启用 link-submit 插件；关闭后前台隐藏“提交友链申请”按钮
             - $formkit: text
               name: ownerName
               if: $get(links_enabled).value
