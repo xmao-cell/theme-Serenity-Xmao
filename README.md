@@ -73,10 +73,6 @@
     <td><img src="screenshots/2.png" alt="暗色模式内容" /></td>
     <td><img src="screenshots/4.png" alt="亮色模式文章" /></td>
   </tr>
-  <tr>
-    <td><img src="screenshots/5.webp" alt="标签页" /></td>
-    <td><img src="screenshots/6.webp" alt="更多页面" /></td>
-  </tr>
 </table>
 
 ---
