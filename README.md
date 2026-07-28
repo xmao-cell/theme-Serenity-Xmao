@@ -253,20 +253,6 @@
 
 ---
 
-## 💬 交流群
-
-<div align="center">
-
-| QQ交流群 |
-|:---:|
-| <img src="screenshots/7.jpg" alt="微信交流群" width="280" /> |
-
-*扫码加入，一起交流主题使用心得~*
-
-</div>
-
-
-
 ## 📜 License
 
 [GPL-3.0](LICENSE)
