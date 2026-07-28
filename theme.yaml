@@ -7,7 +7,7 @@ spec:
   author:
     name: Xmao
     website: https://www.sitn.top
-  description: 基于 Serenity 开发的 Halo 博客主题进行二次开发，新增 Xmao 品牌信息、友链资料复制、Link Submit 适配及友链申请流程。
+  description: 基于 Serenity 开发的 Halo 博客主题二次开发版本，新增 Xmao 品牌信息、友链资料复制、Link Submit 适配、友链申请流程及文章页移动端显示优化。
   logo: /themes/theme-Serenity-Xmao/assets/public/favicon.jpg
   homepage: https://www.sitn.top
   issues: https://github.com/xmao-cell/theme-Serenity-Xmao/issues
