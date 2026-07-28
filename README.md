@@ -31,7 +31,8 @@
 
 本项目是基于 **Serenity 开发的 Halo 博客主题**进行的二次开发版本，并非从零开发。原主题提供了基础页面结构、视觉系统、亮暗模式、后台配置及多数页面能力；本项目在此基础上完成了 Xmao 品牌信息、主题标识和友链申请功能等定制。
 
-- 上游主题：[Serenity-Grace（Halo 应用市场）](https://www.halo.run/store/apps/app-ltmkjavf)
+- 原项目：[atangccc/Serenity-Grace](https://github.com/atangccc/Serenity-Grace)
+- 应用市场：[Serenity-Grace（Halo 应用市场）](https://www.halo.run/store/apps/app-ltmkjavf)
 - 二次开发主题：`theme-Xmao`
 - 二次开发者：Xmao
 - 适用平台：Halo 2.x
