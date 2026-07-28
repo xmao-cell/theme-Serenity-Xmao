@@ -1,21 +1,21 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-Xmao
+  name: theme-Serenity-Xmao
 spec:
-  displayName: theme-Xmao
+  displayName: theme-Serenity-Xmao
   author:
     name: Xmao
     website: https://www.sitn.top
   description: 基于 Serenity 开发的 Halo 博客主题进行二次开发，新增 Xmao 品牌信息、友链资料复制、Link Submit 适配及友链申请流程。
-  logo: /themes/theme-Xmao/assets/public/favicon.jpg
+  logo: /themes/theme-Serenity-Xmao/assets/public/favicon.jpg
   homepage: https://www.sitn.top
   issues: https://github.com/xmao-cell/theme-Serenity-Xmao/issues
   license:
     - name: GPL-3.0
       url: LICENSE
-  settingName: theme-Xmao-setting
-  configMapName: theme-Xmao-configmap
+  settingName: theme-Serenity-Xmao-setting
+  configMapName: theme-Serenity-Xmao-configmap
   version: 2.1.4
   requires: ">=2.0.0"
   customTemplates:

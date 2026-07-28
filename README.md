@@ -1,6 +1,6 @@
 <img width="2557" height="1350" alt="image" src="https://github.com/user-attachments/assets/37f1dc1e-1fc6-471b-a5be-34c4baa7d45e" /><div align="center">
 
-<img src="screenshots/1.png" alt="theme-Xmao Banner" width="800" />
+<img src="screenshots/1.png" alt="theme-Serenity-Xmao Banner" width="800" />
 
 <br/>
 <br/>
@@ -33,7 +33,7 @@
 
 - 原项目：[atangccc/Serenity-Grace](https://github.com/atangccc/Serenity-Grace)
 - 应用市场：[Serenity-Grace（Halo 应用市场）](https://www.halo.run/store/apps/app-ltmkjavf)
-- 二次开发主题：`theme-Xmao`
+- 二次开发主题：`theme-Serenity-Xmao`
 - 二次开发者：Xmao
 - 适用平台：Halo 2.x
 - 开源协议：GPL-3.0

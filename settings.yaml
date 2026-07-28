@@ -1,7 +1,7 @@
-﻿apiVersion: v1alpha1
+apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-Xmao-setting
+  name: theme-Serenity-Xmao-setting
 spec:
   forms:
     - group: basic

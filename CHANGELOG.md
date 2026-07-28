@@ -1,4 +1,4 @@
-# theme-Xmao 更新日志
+# theme-Serenity-Xmao 更新日志
 
 ## 2.1.4
 
