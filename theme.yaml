@@ -15,7 +15,7 @@ spec:
       url: LICENSE
   settingName: theme-Xmao-setting
   configMapName: theme-Xmao-configmap
-  version: 2.1.2
+  version: 2.1.3
   requires: ">=2.0.0"
   customTemplates:
     page:

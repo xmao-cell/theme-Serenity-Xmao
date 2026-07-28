@@ -129,8 +129,8 @@
           <span class="link-apply-item" th:if="${theme.config.footer != null and theme.config.footer.icpConfig != null and theme.config.footer.icpConfig.showIcp == true and theme.config.footer.icpConfig.icp != null and !#strings.isEmpty(theme.config.footer.icpConfig.icp)}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">ICP：</span><span class="link-apply-value" th:text="${theme.config.footer.icpConfig.icp}">ICP备案号</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
         </div>
         <div class="link-apply-actions">
-          <button class="link-apply-submit" type="button" th:if="${linkSubmitEnabled and pluginFinder.available('link-submit')}" onclick="LinkSubmitWidget.open()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <button class="link-apply-copy-all link-apply-submit" type="button" th:if="${linkSubmitEnabled and pluginFinder.available('link-submit')}" onclick="LinkSubmitWidget.open()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
             <span>提交友链申请</span>
           </button>
           <button class="link-apply-copy-all" type="button" onclick="copyAllApplyInfo(this)">
