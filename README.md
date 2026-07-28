@@ -1,11 +1,11 @@
-<div align="center">
+<img width="2557" height="1350" alt="image" src="https://github.com/user-attachments/assets/37f1dc1e-1fc6-471b-a5be-34c4baa7d45e" /><div align="center">
 
 <img src="screenshots/1.png" alt="theme-Xmao Banner" width="800" />
 
 <br/>
 <br/>
 
-# 🌸 theme-Xmao
+# 🌸 theme-Serenity-Xmao
 
 **基于 Serenity 二次开发的 Halo 2.x 博客主题**
 
