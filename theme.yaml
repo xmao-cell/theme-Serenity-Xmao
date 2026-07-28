@@ -1,0 +1,80 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-Xmao
+spec:
+  displayName: theme-Xmao
+  author:
+    name: Xmao
+    website: https://www.sitn.top
+  description: Serenity 开发的 Halo 博客主题，简约优雅，支持亮色/暗色双主题色配置。
+  logo: /themes/theme-Xmao/assets/public/favicon.jpg
+  homepage: https://www.sitn.top
+  license:
+    - name: GPL-3.0
+      url: LICENSE
+  settingName: theme-Xmao-setting
+  configMapName: theme-Xmao-configmap
+  version: 2.1.2
+  requires: ">=2.0.0"
+  customTemplates:
+    page:
+      - name: default
+        description: 默认页面
+        screenshot: 
+        file: page.html
+      - name: about
+        description: 关于我
+        screenshot: 
+        file: about.html
+      - name: moments
+        description: 碎碎念
+        screenshot: 
+        file: moments.html
+      - name: links
+        description: 朋友们
+        screenshot: 
+        file: links.html
+      - name: guestbook
+        description: 留言板
+        screenshot: 
+        file: guestbook.html
+      - name: projects
+        description: 我的项目
+        screenshot: 
+        file: projects.html
+      - name: friends-circle
+        description: 朋友圈
+        screenshot: 
+        file: friends-circle.html
+      - name: photos
+        description: 图库
+        screenshot: 
+        file: photos.html
+      - name: star-gallery
+        description: 星图库
+        screenshot: 
+        file: star-gallery.html
+      - name: wishes
+        description: 便签墙
+        screenshot: 
+        file: wishes.html
+      - name: equipments
+        description: 我的装备
+        screenshot: 
+        file: equipments.html
+    post:
+      - name: default
+        description: 默认文章
+        screenshot: 
+        file: post.html
+    category:
+      - name: default
+        description: 默认分类
+        screenshot: 
+        file: category.html
+    tag:
+      - name: default
+        description: 默认标签
+        screenshot: 
+        file: tag.html

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+  Theme: theme-Xmao
+  Author: Xmao
+  Build: 2026-07-05 00:01:15
+  Fingerprint: 1a93cc3686d739b8
+  Copyright (c) 2026 Xmao. All rights reserved.
+-->
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${singlePage.spec.title}, content = ~{::content}, head = ~{::head})}">
+<th:block th:fragment="head">
+  <link rel="stylesheet" th:href="@{/assets/css/post-page.css}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" th:content="${singlePage.spec.title}" />
+  <meta property="og:description" th:content="${singlePage.status.excerpt ?: (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.description != null ? theme.config.basic.siteInfo.description : site.subtitle)}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" th:content="${singlePage.spec.title}" />
+</th:block>
+<th:block th:fragment="content">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title" th:text="${singlePage.spec.title}">页面标题</h1>
+    </header>
+    
+    <div class="post-content" th:utext="${singlePage.content.content}">
+      页面内容
+    </div>
+  </article>
+</th:block>
+</html>
