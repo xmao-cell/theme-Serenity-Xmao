@@ -382,10 +382,7 @@
 .link-apply {
   margin-top: auto;
   margin-bottom: var(--space-10);
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-5);
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
+  padding: var(--space-6);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-xl);
@@ -407,16 +404,49 @@
 .link-apply-desc {
   font-size: 13px;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   line-height: 1.6;
 }
 
+.link-apply-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.link-apply-panel,
+.link-apply-requirements {
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+[data-theme="light"] .link-apply-panel,
+[data-theme="light"] .link-apply-requirements {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+.link-apply-panel-title {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.link-apply-panel-desc {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
 .link-apply-info {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: var(--space-2);
-  align-items: center;
-  justify-content: center;
   padding: var(--space-3) var(--space-4);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -440,14 +470,22 @@
 }
 
 .link-apply-item {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-2);
   cursor: pointer;
-  padding: 2px 6px;
+  padding: 5px 6px;
   border-radius: var(--radius-sm);
   transition: background var(--duration-fast), color var(--duration-fast);
   position: relative;
+}
+
+.link-apply-item .link-apply-value {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 
 .link-apply-item:hover {
@@ -490,6 +528,54 @@
   animation: copyTipFade 1.5s ease forwards;
 }
 
+.link-apply-steps {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-apply-step {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.link-apply-step-index {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.link-apply-step-content {
+  display: grid;
+  gap: 3px;
+  padding-top: 3px;
+}
+
+.link-apply-step-content strong {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.link-apply-step-content small {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
 @keyframes copyTipFade {
   0% { opacity: 0; transform: translateX(-50%) translateY(4px); }
   15% { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -503,7 +589,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-top: var(--space-3);
+  margin: var(--space-4) 0;
 }
 
 .link-apply-submit,
@@ -562,6 +648,25 @@
 
 .link-apply-actions button:active {
   transform: translateY(0);
+}
+
+.link-apply-requirements {
+  padding: var(--space-4) var(--space-5);
+}
+
+.link-apply-requirement-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.link-apply-requirement-list li::marker {
+  color: var(--color-accent);
 }
 
 @media (max-width: 1024px) {
@@ -909,10 +1014,13 @@
   .link-apply-desc {
     font-size: 12px;
   }
-  
-  .link-apply-info {
-    flex-direction: column;
-    gap: var(--space-2);
+
+  .link-apply-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .link-apply-requirement-list {
+    grid-template-columns: 1fr;
   }
   
   .link-apply-info span {

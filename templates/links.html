@@ -119,14 +119,41 @@
            th:if="${theme.config.links == null || theme.config.links.linksConfig == null || theme.config.links.linksConfig.enabled == null || theme.config.links.linksConfig.enabled}"
            th:with="linkSubmitEnabled=${theme.config.links == null || theme.config.links.linksConfig == null || theme.config.links.linksConfig.linkSubmitEnabled == null || theme.config.links.linksConfig.linkSubmitEnabled}">
         <h2 class="link-apply-title">申请友链</h2>
-        <p class="link-apply-desc" th:if="${linkSubmitEnabled and pluginFinder.available('link-submit')}">点击“提交友链申请”填写资料，审核通过后即可加入。下方是本站信息，点击可一键复制。</p>
-        <p class="link-apply-desc" th:unless="${linkSubmitEnabled and pluginFinder.available('link-submit')}">如需交换友链，请直接联系博主。下方是本站信息，点击可一键复制。</p>
-        <div class="link-apply-info" th:with="lc=${theme.config.links != null ? theme.config.links.linksConfig : null}">
-          <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">名称：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerName)) ? (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title) : lc.ownerName}">站点名称</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
-          <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">描述：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerDescription)) ? (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.description != null ? theme.config.basic.siteInfo.description : site.subtitle) : lc.ownerDescription}">站点描述</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
-          <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">链接：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerUrl)) ? site.url : lc.ownerUrl}">站点链接</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
-          <span class="link-apply-item" th:if="${(lc != null and !#strings.isEmpty(lc.ownerAvatar)) or !#strings.isEmpty(site.logo)}" th:with="avatarUrl=${(lc == null or #strings.isEmpty(lc.ownerAvatar)) ? site.logo : lc.ownerAvatar},siteBase=${#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : site.url}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">头像：</span><span class="link-apply-value" th:text="${#strings.startsWith(avatarUrl, 'http://') or #strings.startsWith(avatarUrl, 'https://') ? avatarUrl : siteBase + (#strings.startsWith(avatarUrl, '/') ? avatarUrl : '/' + avatarUrl)}">头像完整链接</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
-          <span class="link-apply-item" th:if="${theme.config.footer != null and theme.config.footer.icpConfig != null and theme.config.footer.icpConfig.showIcp == true and theme.config.footer.icpConfig.icp != null and !#strings.isEmpty(theme.config.footer.icpConfig.icp)}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">ICP：</span><span class="link-apply-value" th:text="${theme.config.footer.icpConfig.icp}">ICP备案号</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
+        <p class="link-apply-desc" th:if="${linkSubmitEnabled and pluginFinder.available('link-submit')}">请先阅读申请流程和要求，确认符合后点击“提交友链申请”。本站信息支持单项或一键复制。</p>
+        <p class="link-apply-desc" th:unless="${linkSubmitEnabled and pluginFinder.available('link-submit')}">请先阅读申请流程和要求，确认符合后直接联系博主。本站信息支持单项或一键复制。</p>
+        <div class="link-apply-layout">
+          <section class="link-apply-panel link-apply-site-panel" aria-labelledby="linkApplySiteTitle">
+            <h3 class="link-apply-panel-title" id="linkApplySiteTitle">本站信息</h3>
+            <p class="link-apply-panel-desc">提交申请前，请先将本站添加到你的友情链接页面。</p>
+            <div class="link-apply-info" th:with="lc=${theme.config.links != null ? theme.config.links.linksConfig : null}">
+              <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">名称：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerName)) ? (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title) : lc.ownerName}">站点名称</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
+              <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">描述：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerDescription)) ? (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.description != null ? theme.config.basic.siteInfo.description : site.subtitle) : lc.ownerDescription}">站点描述</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
+              <span class="link-apply-item" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">链接：</span><span class="link-apply-value" th:text="${(lc == null or #strings.isEmpty(lc.ownerUrl)) ? site.url : lc.ownerUrl}">站点链接</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
+              <span class="link-apply-item" th:if="${(lc != null and !#strings.isEmpty(lc.ownerAvatar)) or !#strings.isEmpty(site.logo)}" th:with="avatarUrl=${(lc == null or #strings.isEmpty(lc.ownerAvatar)) ? site.logo : lc.ownerAvatar},siteBase=${#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : site.url}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">头像：</span><span class="link-apply-value" th:text="${#strings.startsWith(avatarUrl, 'http://') or #strings.startsWith(avatarUrl, 'https://') ? avatarUrl : siteBase + (#strings.startsWith(avatarUrl, '/') ? avatarUrl : '/' + avatarUrl)}">头像完整链接</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
+              <span class="link-apply-item" th:if="${theme.config.footer != null and theme.config.footer.icpConfig != null and theme.config.footer.icpConfig.showIcp == true and theme.config.footer.icpConfig.icp != null and !#strings.isEmpty(theme.config.footer.icpConfig.icp)}" onclick="copyApplyInfo(this)" title="点击复制"><span class="label">ICP：</span><span class="link-apply-value" th:text="${theme.config.footer.icpConfig.icp}">ICP备案号</span><span class="copy-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span></span>
+            </div>
+          </section>
+          <section class="link-apply-panel link-apply-flow-panel" aria-labelledby="linkApplyFlowTitle">
+            <h3 class="link-apply-panel-title" id="linkApplyFlowTitle">申请流程</h3>
+            <ol class="link-apply-steps">
+              <li class="link-apply-step">
+                <span class="link-apply-step-index">1</span>
+                <span class="link-apply-step-content"><strong>添加本站友链</strong><small>先在你的友情链接页面添加本站信息。</small></span>
+              </li>
+              <li class="link-apply-step">
+                <span class="link-apply-step-index">2</span>
+                <span class="link-apply-step-content">
+                  <strong>提交友链申请</strong>
+                  <small th:if="${linkSubmitEnabled and pluginFinder.available('link-submit')}">确认本站链接可见后，点击下方按钮填写资料。</small>
+                  <small th:unless="${linkSubmitEnabled and pluginFinder.available('link-submit')}">确认本站链接可见后，按页面提示联系博主。</small>
+                </span>
+              </li>
+              <li class="link-apply-step">
+                <span class="link-apply-step-index">3</span>
+                <span class="link-apply-step-content"><strong>等待审核</strong><small>审核通过后即可加入本站友链。</small></span>
+              </li>
+            </ol>
+          </section>
         </div>
         <div class="link-apply-actions">
           <button class="link-apply-copy-all link-apply-submit" type="button" th:if="${linkSubmitEnabled and pluginFinder.available('link-submit')}" onclick="LinkSubmitWidget.open()">
@@ -138,6 +165,18 @@
             <span>复制全部信息</span>
           </button>
         </div>
+        <section class="link-apply-requirements" aria-labelledby="linkApplyRequirementsTitle">
+          <h3 class="link-apply-panel-title" id="linkApplyRequirementsTitle">申请要求</h3>
+          <ul class="link-apply-requirement-list">
+            <li>网站能够正常、稳定访问。</li>
+            <li>网站已部署 SSL 证书，并支持 HTTPS 访问。</li>
+            <li>网站内容合法、健康，不含违法违规、恶意跳转、欺诈或其他不良内容。</li>
+            <li>网站具有一定的原创内容，并保持正常维护。</li>
+            <li>提交申请前，请先将本站添加到你的友情链接页面。</li>
+            <li>友情链接页面应当能够正常访问，并可直接找到本站链接。</li>
+            <li>ICP 备案属于加分项，但不作为审核通过的硬性条件。</li>
+          </ul>
+        </section>
       </div>
     </div>
   </main>
