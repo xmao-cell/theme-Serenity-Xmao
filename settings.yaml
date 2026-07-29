@@ -30,6 +30,11 @@ spec:
               label: 站点描述
               value: "前端开发者 / 独立开发者 / 博主"
               help: 显示在首页和关于页面
+        - $formkit: switch
+          name: mobileNavDrawerEnabled
+          label: 启用抽屉式移动端导航
+          value: false
+          help: 默认关闭并保留原有移动端导航；开启后，手机端顶部将显示站点名称、搜索、明暗切换和右侧抽屉菜单。仅影响屏幕宽度不超过 768px 的设备。
         - $formkit: select
           name: defaultTheme
           label: 默认主题模式

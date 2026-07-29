@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-<header class="header">
+<header class="header"
+        th:classappend="${theme.config.basic != null and theme.config.basic.mobileNavDrawerEnabled == true} ? ' mobile-nav-drawer-enabled' : ''">
   <div class="header-inner">
     <div class="header-left">
       <a class="logo" th:href="@{/}" th:title="${site.title}" th:aria-label="${site.title}">
         <img class="logo-avatar" 
              th:src="${site.logo ?: '/themes/theme-Serenity-Xmao/assets/public/logo.webp'}"
              th:alt="${site.title}" />
+        <span class="mobile-site-title"
+              th:text="${theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title}">站点名称</span>
       </a>
       
       <nav class="nav-left" id="nav">
@@ -25,7 +28,9 @@
             <a th:href="@{${menuItem.status.href}}" 
                th:target="${menuItem.spec.target?.value}"
                class="nav-btn nav-btn-text nav-btn-with-icon" 
-               th:title="${menuItem.status.displayName}">
+               th:title="${menuItem.status.displayName}"
+               aria-haspopup="true"
+               aria-expanded="false">
               <th:block th:replace="~{modules/nav-icon :: icon(href=${menuItem.status.href}, item=${menuItem})}" />
               <span class="nav-btn-text-label" th:text="${menuItem.status.displayName}">菜单</span>
             </a>
@@ -72,7 +77,11 @@
         </svg>
       </button>
       
-      <button class="header-btn menu-toggle" onclick="toggleMenu()" aria-label="菜单">
+      <button class="header-btn menu-toggle"
+              onclick="toggleMenu()"
+              aria-label="菜单"
+              aria-controls="nav"
+              aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12h18M3 6h18M3 18h18"/>
         </svg>
