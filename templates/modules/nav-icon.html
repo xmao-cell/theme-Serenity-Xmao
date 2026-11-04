@@ -85,6 +85,16 @@
     </svg>
   </th:block>
 
+  <!-- 公告 -->
+  <th:block th:if="${#strings.contains(href, '/announcements')}">
+    <i th:if="${!#strings.isEmpty(ac)}"
+       th:classappend="${ac}" class="nav-custom-icon"></i>
+    <svg th:if="${#strings.isEmpty(ac)}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+      <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+    </svg>
+  </th:block>
+
   <!-- 图库 -->
   <th:block th:if="${#strings.contains(href, '/photos')}">
     <i th:if="${(ni != null and ni.iconPhotos != null and !#strings.isEmpty(ni.iconPhotos)) or !#strings.isEmpty(ac)}"
@@ -127,7 +137,7 @@
   </th:block>
 
   <!-- 未匹配已知路径：先查自定义页面图标列表，再走 annotation fallback -->
-  <th:block th:if="${href != '/' and href != '' and href != site.url and href != site.url + '/' and !#strings.contains(href, '/archives') and !#strings.contains(href, '/tags') and !#strings.contains(href, '/categories') and !#strings.contains(href, '/about') and !#strings.contains(href, '/moments') and !#strings.contains(href, '/links') and !#strings.contains(href, '/guestbook') and !#strings.contains(href, '/projects') and !#strings.contains(href, '/photos') and !#strings.contains(href, '/friends-circle') and !#strings.contains(href, '/wishes') and !#strings.contains(href, '/star-gallery') and !#strings.contains(href, '/equipments')}"
+  <th:block th:if="${href != '/' and href != '' and href != site.url and href != site.url + '/' and !#strings.contains(href, '/archives') and !#strings.contains(href, '/tags') and !#strings.contains(href, '/categories') and !#strings.contains(href, '/about') and !#strings.contains(href, '/moments') and !#strings.contains(href, '/links') and !#strings.contains(href, '/guestbook') and !#strings.contains(href, '/projects') and !#strings.contains(href, '/announcements') and !#strings.contains(href, '/photos') and !#strings.contains(href, '/friends-circle') and !#strings.contains(href, '/wishes') and !#strings.contains(href, '/star-gallery') and !#strings.contains(href, '/equipments')}"
             th:with="customIcons=${theme.config.basic != null ? theme.config.basic.customNavIcons : null}">
     <!--/* 遍历自定义页面图标列表匹配 */-->
     <th:block th:if="${customIcons != null}" th:each="ci : ${customIcons}">

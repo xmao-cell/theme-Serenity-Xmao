@@ -1,0 +1,137 @@
+/*
+ * Popup skin for acanyo/plugin-announcement.
+ * The plugin keeps control of visibility, position and button actions.
+ */
+
+html body .likcc-popup__overlay {
+  font-family: var(--font-sans);
+}
+
+html body .likcc-popup__overlay--center {
+  background: rgba(0, 0, 0, 0.52);
+  background: color-mix(in srgb, var(--color-bg) 58%, transparent);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+
+html body .likcc-popup__wrapper {
+  max-width: 380px;
+  border: 1px solid var(--color-border) !important;
+  border-color: color-mix(in srgb, var(--color-accent) 24%, var(--color-border)) !important;
+  border-radius: var(--radius-lg) !important;
+  background: var(--color-bg-soft) !important;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--color-bg-soft) 82%, transparent),
+      color-mix(in srgb, var(--color-bg) 72%, transparent)
+    ) !important;
+  color: var(--color-text);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.24) !important;
+  box-shadow:
+    0 20px 64px color-mix(in srgb, var(--color-bg) 58%, transparent),
+    0 8px 28px rgba(var(--color-accent-rgb), 0.12),
+    inset 0 1px 0 color-mix(in srgb, var(--color-text) 18%, transparent),
+    inset 0 -1px 0 var(--color-border) !important;
+  backdrop-filter: blur(24px) saturate(155%);
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
+}
+
+html body .likcc-popup__header {
+  padding-right: 28px;
+}
+
+html body .likcc-popup__icon {
+  width: 34px;
+  height: 34px;
+  padding: 8px !important;
+}
+
+html body .likcc-popup__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+html body .likcc-popup__title {
+  color: var(--color-text) !important;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+html body .likcc-popup__content {
+  color: var(--color-text-secondary) !important;
+  font-size: 14px;
+}
+
+html body .likcc-popup__content a {
+  color: var(--color-accent) !important;
+}
+
+html body .likcc-popup__content img {
+  border-radius: var(--radius-md) !important;
+}
+
+html body .likcc-popup__close {
+  border-radius: var(--radius-sm) !important;
+  color: var(--color-text-muted) !important;
+}
+
+html body .likcc-popup__close:hover {
+  background: rgba(var(--color-accent-rgb), 0.1) !important;
+  color: var(--color-accent) !important;
+}
+
+html body .likcc-popup__btn {
+  min-height: 40px;
+  border-radius: var(--radius-md) !important;
+  font-family: inherit;
+  transition:
+    filter var(--duration-fast),
+    transform var(--duration-fast),
+    background var(--duration-fast);
+}
+
+html body .likcc-popup__btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+html body .likcc-popup__btn--secondary {
+  border: 1px solid var(--color-border) !important;
+  background: color-mix(in srgb, var(--color-bg-mute) 72%, transparent) !important;
+}
+
+html body .likcc-popup__btn--secondary:hover {
+  border-color: rgba(var(--color-accent-rgb), 0.35) !important;
+  background: rgba(var(--color-accent-rgb), 0.1) !important;
+}
+
+@media (max-width: 480px) {
+  html body .likcc-popup__overlay {
+    padding: var(--space-3);
+  }
+
+  html body .likcc-popup__wrapper {
+    max-width: 350px;
+    padding: var(--space-4) !important;
+  }
+
+  html body .likcc-popup__footer {
+    margin-top: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .likcc-popup__overlay,
+  html body .likcc-popup__wrapper {
+    animation: none !important;
+  }
+
+  html body .likcc-popup__btn {
+    transition: none;
+  }
+
+  html body .likcc-popup__btn:hover {
+    transform: none;
+  }
+}

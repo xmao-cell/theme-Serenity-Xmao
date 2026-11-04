@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+  Theme: theme-Serenity-Xmao
+  Author: Xmao
+  Copyright (c) 2026 Xmao. All rights reserved.
+-->
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(title = ${singlePage.spec.title ?: '公告'}, content = ~{::content}, head = ~{::head})}">
+<th:block th:fragment="head">
+  <link rel="stylesheet" th:href="@{/assets/css/announcements.css}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" th:content="${singlePage.spec.title ?: '公告'}" />
+  <meta property="og:description"
+        th:content="${singlePage.status.excerpt ?: '查看站点公告与更新记录'}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" th:content="${singlePage.spec.title ?: '公告'}" />
+</th:block>
+
+<th:block th:fragment="content">
+  <main class="main">
+    <div class="container">
+      <section class="announcements-page">
+        <header class="announcements-header page-header" data-aos="fade-up">
+          <h1 class="announcements-title page-title"
+              th:text="${singlePage.spec.title ?: '公告'}">公告</h1>
+          <p class="announcements-subtitle page-desc"
+             th:text="${singlePage.status.excerpt ?: '查看站点公告与更新记录'}">查看站点公告与更新记录</p>
+        </header>
+
+        <div class="announcements-panel"
+             th:if="${pluginFinder.available('announcement')}">
+          <announcement-list page-size="10"></announcement-list>
+        </div>
+
+        <div class="plugin-notice"
+             th:unless="${pluginFinder.available('announcement')}"
+             data-aos="fade-up">
+          <div class="plugin-notice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <h3 class="plugin-notice-title">公告页面需要安装插件</h3>
+          <p class="plugin-notice-desc">请先安装并启用「公告插件」</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</th:block>
+</html>

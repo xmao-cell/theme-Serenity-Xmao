@@ -36,7 +36,7 @@
 - 应用市场：[Serenity-Grace（Halo 应用市场）](https://www.halo.run/store/apps/app-ltmkjavf)
 - 二次开发主题：`theme-Serenity-Xmao`
 - 二次开发者：Xmao
-- 适用平台：Halo 2.x
+- 适用平台：Halo 2.27.2 及以上版本
 - 开源协议：GPL-3.0
 
 使用或继续修改本项目时，请保留上游来源、本项目二次开发说明及 GPL-3.0 许可证声明。
@@ -60,6 +60,9 @@
 - 将文章封面与正文卡片统一为 `12px` 圆角，并使移动端封面与正文保持一致的左右留白。
 - 增加可选的移动端抽屉导航，默认仍使用原来的导航样式。
 - 替换主题自带的亮色、暗色首页背景，并调整导航按钮的颜色和反馈。
+- 适配公告插件弹窗样式，增加液态玻璃公告详情、导航公告图标和公告列表页面模板。
+- 按 Halo 2.27.2 的主题安全校验维护自定义模板声明，明确最低兼容版本为 `>=2.27.2`。
+- 提供 Halo 2.26+ 页面布局契约，使支持该契约的插件前台页面复用主题外壳。
 
 ---
 
@@ -146,6 +149,10 @@
     <td>GitHub 项目卡片 · 区分"我的项目"和"收藏项目" · 版本详情弹窗（自动拉取 Releases）</td>
   </tr>
   <tr>
+    <td> <strong>公告</strong></td>
+    <td>适配公告插件 · 公告分类与列表 · 公告详情弹窗 · 亮暗模式与移动端布局</td>
+  </tr>
+  <tr>
     <td> <strong>朋友圈</strong></td>
     <td>订阅友链文章聚合展示</td>
   </tr>
@@ -202,6 +209,7 @@
 | ✅ 必需 | [链接管理](https://www.halo.run/store/apps/app-hfbQg) | 友链页面数据源 |
 | ✅ 必需 | [图库管理](https://halo.run/store/apps/app-BmQJW) | 图库页面数据源 |
 | 🔌 可选 | Link Submit 友链申请插件 | 提供前台友链申请入口，主题设置中可独立启用或关闭 |
+| 🔌 可选 | [公告插件](https://github.com/acanyo/plugin-announcement) | 公告弹窗和公告列表页面 |
 | 💡 推荐 | [AstraHub 星链](https://www.halo.run/store/apps) | 友链邀请注册 |
 | 💡 推荐 | [朋友圈](https://docs.kunkunyu.com/docs/plugin-friends) | 朋友圈聚合页面 |
 | 🔌 可选 | [爱发电](https://blog.xindu.site/docs/plugin-afdian) | 关于页面赞助展示 |
@@ -221,7 +229,7 @@
 2. 在 Halo 后台「外观 → 主题」中上传安装
 3. 启用主题并进入「主题设置」进行个性化配置
 
-> 已安装 `2.1.4` 的用户可以直接上传新版压缩包覆盖。新版移动端导航默认关闭，可在「主题设置 → 基本设置」中开启。
+> 已安装 `2.1.5` 的用户可以直接上传新版压缩包覆盖。移动端导航默认关闭，可在「主题设置 → 基本设置」中开启。
 
 ---
 
@@ -236,6 +244,7 @@
 | 朋友们 | `links.html` | `links` | `/links` |
 | 留言板 | `guestbook.html` | `guestbook` | `/guestbook` |
 | 项目集 | `projects.html` | `projects` | `/projects` |
+| 公告 | `announcements.html` | `announcements` | `/announcements` |
 | 朋友圈 | `friends-circle.html` | `friends-circle` | `/friends-circle` |
 | 图库 | `photos.html` | `photos` | `/photos` |
 | 便签墙 | `wishes.html` | `wishes` | `/wishes` |

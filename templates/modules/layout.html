@@ -89,7 +89,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content="Halo" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <title th:text="${title != null ? title + ' - ' + (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title) : (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title)}">theme-Serenity-Xmao</title>
+  <title th:if="${title != null or head == null}" th:text="${title != null ? title + ' - ' + (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title) : (theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.title != null ? theme.config.basic.siteInfo.title : site.title)}">theme-Serenity-Xmao</title>
   <meta name="description" th:content="${theme.config.basic != null and theme.config.basic.siteInfo != null and theme.config.basic.siteInfo.description != null ? theme.config.basic.siteInfo.description : site.subtitle}" />
   
   <meta th:if="${theme.config.seo != null && theme.config.seo.seoConfig != null && theme.config.seo.seoConfig.keywords != null && !#strings.isEmpty(theme.config.seo.seoConfig.keywords)}" 
@@ -152,6 +152,9 @@
     }
   </style>
   <link rel="stylesheet" th:href="@{/assets/css/base.css}" />
+  <link rel="stylesheet"
+        th:if="${pluginFinder.available('announcement')}"
+        th:href="@{/assets/css/announcement-plugin.css}" />
 
   <script th:inline="javascript">
     window.__ACCENT_LIGHT = /*[[${theme.config.basic != null and theme.config.basic.lightColor != null and !#strings.isEmpty(theme.config.basic.lightColor) ? theme.config.basic.lightColor : '#7DCDE8'}]]*/ '#7DCDE8';
@@ -239,7 +242,9 @@
     <link rel="stylesheet" th:if="${theme.config.welcome == null || theme.config.welcome.welcomeConfig == null || theme.config.welcome.welcomeConfig.enabled == null || theme.config.welcome.welcomeConfig.enabled}" th:href="@{/assets/css/welcome.css}" />
   </noscript>
   
-  <th:block th:replace="${head}" />
+  <th:block th:if="${head != null}">
+    <th:block th:replace="${head}" />
+  </th:block>
   
   <script th:if="${theme.config.seo != null && theme.config.seo.seoConfig != null && (theme.config.seo.seoConfig.enableJsonLd == null || theme.config.seo.seoConfig.enableJsonLd)}" type="application/ld+json" th:inline="javascript">
   {

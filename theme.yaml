@@ -17,8 +17,8 @@ spec:
       url: LICENSE
   settingName: theme-Serenity-Xmao-setting
   configMapName: theme-Serenity-Xmao-configmap
-  version: 2.1.5
-  requires: ">=2.0.0"
+  version: 2.1.8
+  requires: ">=2.27.2"
   customTemplates:
     page:
       - name: default
@@ -45,6 +45,10 @@ spec:
         description: 我的项目
         screenshot: 
         file: projects.html
+      - name: announcements
+        description: 公告
+        screenshot:
+        file: announcements.html
       - name: friends-circle
         description: 朋友圈
         screenshot: 

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<!--
+  Halo page layout contract (v1).
+  Keep the public fragment signature as html(head, content).
+  The actual theme shell remains in modules/layout.html so existing pages and
+  plugin-rendered pages share the same header, footer, theme mode and assets.
+-->
+<html lang="zh-CN"
+      xmlns:th="https://www.thymeleaf.org"
+      th:fragment="html(head, content)"
+      th:replace="~{modules/layout :: html(title = ${null}, content = ${content}, head = ${head})}">
+</html>
